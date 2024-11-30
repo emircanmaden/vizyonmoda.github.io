@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+/* Google Fonts'tan Poppins yazı tipini içe aktar */
+
+:root {
+    --main-color: red; /* Ana renk olarak kırmızı tanımlandı */
+    --black-color: #0e0e0e; /* Siyah renk tanımlandı */
+    --border: 0.1rem solid rgba(255, 255, 255, 0.4); /* Beyaz renkli yarı saydam bir kenar tanımlandı */
+}
+
+/* Genel Başlangıc */
+
+* {
+    font-family: "Poppins", sans-serif; /* Tüm elemanlar için Poppins yazı tipi ayarlandı */
+    margin: 0; /* Tüm elemanların dış boşlukları sıfırlandı */
+    padding: 0; /* Tüm elemanların iç boşlukları sıfırlandı */
+    box-sizing: border-box; /* Kutuların genişliğini ve yüksekliğini içindeki dolgu ve kenar boşluklarını da dikkate alarak ayarlama */
+    outline: none; /* Elemanların odaklandığında görünen sınırlarını kaldırma */
+    border: none; /* Kenarlıkları kaldırma */
+    text-decoration: none; /* Metin altı çizgilerini kaldırma */
+    text-transform: capitalize; /* Metindeki ilk harfleri büyük yapma */
+    transition: 0.2s ease; /* Geçiş animasyonu tanımlandı */
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px olacak şekilde ayarlandı (kolay hesaplama için) */
+    overflow-x: hidden; /* Yatay kaydırmayı gizleme */
+    scroll-padding-top: 9rem; /* Scroll işlemi sırasında üstteki boşluğu ayarlama */
+    scroll-behavior: smooth; /* Scroll geçişlerini yumuşatma */
+}
+
+html ::-webkit-scrollbar{
+    width: 0.5rem;
+    background-color: var(--black-color);
+}
+
+html ::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+html ::-webkit-scrollbar-thumb{
+    border-radius: 3rem;
+    background-color: white;
+}
+
+body {
+    background-color: var(--black-color); /* Arka plan rengi siyah olarak ayarlandı */
+    scroll-behavior: smooth; /* Yavaş kaydırma efekti */
+
+}
+
+section {
+    padding: 3.5rem 7%; /* Bölümün iç boşlukları üst-alt 3.5rem, sağ-sol 7% olarak ayarlandı */
+}
+
+a{
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+.btn {
+    margin-top: 1rem; /* Butonun üst kısmında 1rem boşluk oluşturma */
+    display: inline-block; /* Butonu inline-block olarak ayarlama */
+    padding: 2rem 3.75rem; /* Butonun iç boşlukları */
+    border-radius: 300rem; /* Butonun köşelerini yuvarlama */
+    font-size: 2rem; /* Buton yazı boyutu */
+    color: white; /* Buton yazı rengi beyaz */
+    background-color: rgba(0, 0, 0, 0.7); /* Buton arka planı yarı saydam siyah */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Butonun gölgesini ayarlama */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Geçiş efektleri ayarlama */
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Hover durumunda arka plan rengi koyulaşma */
+    opacity: 0.9; /* Hover durumunda opaklık azaltma */
+    transform: scale(1.05); /* Hover durumunda büyüme efekti */
+}
+
+.heading {
+    font-size: 4rem; /* Başlık yazı boyutu */
+    margin-bottom: 3.5rem; /* Başlığın altındaki boşluk */
+    border-bottom: 0.1rem solid white; /* Başlığın altına beyaz bir sınır ekleme */
+    color: white; /* Başlık rengi beyaz */
+    text-align: center; /* Başlığı ortalama */
+    font-weight: bold;
+}
+
+.heading span {
+    color: black; /* Başlık içindeki span etiketinin rengi siyah */
+    text-transform: uppercase; /* Span içindeki metni büyük harf yapma */
+}
+
+.header .search-form{
+    position: absolute;
+    top: 115%;
+    right: 7%;
+    background-color: white;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 3rem;
+    box-shadow: 0px 0px 25px 2px rgb(0 0 0 / 75%);
+    transform: scaleY(0);
+}
+.header .search-form .active{
+    transform: scaleY(1);
+}
+
+.header .search-form i{
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+    color: var(--black-color);
+}
+
+.header .search-form input{
+    width: 100%;
+}
+
+.header .logo img {
+    height: 10rem; /* Logo resminin yüksekliği 10rem olarak ayarlandı */
+}
+
+.header {
+    background-color: white; /* Üst başlık arka planı beyaz */
+    display: flex; /* Esnek düzen kullanma */
+    align-items: center; /* İç öğeleri ortalama */
+    justify-content: space-between; /* Öğeleri arasını açarak yerleştirme */
+    padding: 0 7%; /* Üst başlık iç boşlukları */
+    margin: 2rem 7%; /* Üst başlığın dış boşlukları */
+    border-radius: 30rem; /* Üst başlığın köşelerini yuvarlama */
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75); /* Üst başlık gölgesi */
+    position: sticky; /* Üst başlığı sayfada sabitleme */
+    top: 0; /* Üst başlığın yukarıdan 0 uzaklıkta olması */
+    z-index: 1000; /* Üst başlığın diğer öğelerin üstünde görünmesi için z-index ayarlama */
+}
+
+.header .navbar a {
+    margin: 0 1rem; /* Navbar bağlantıları arasındaki boşluk */
+    font-size: 2rem; /* Navbar bağlantı yazı boyutu */
+    color: var(--black-color); /* Navbar bağlantı rengi siyah */
+    border-bottom: 0.1rem solid transparent; /* Altına sınır ekleme (aktif olanlar için) */
+}
+
+.header .navbar .active,
+.header .navbar a:hover {
+    border-color: var(--black-color); /* Aktif veya hover durumundaki bağlantının altına siyah sınır ekleme */
+    padding-bottom: 0.5rem; /* Bağlantı altında boşluk oluşturma */
+}
+
+.header .buttons button {
+    cursor: pointer; /* Buton üzerine geldiğinde imleci el şeklinde gösterme */
+    font-size: 2.5rem; /* Buton yazı boyutu */
+    margin-left: 2rem; /* Butonun sol tarafında boşluk oluşturma */
+    background-color: transparent; /* Buton arka plan rengi saydam */
+}
+
+.header .cart-items-container{
+    position: absolute;
+    top: 95%;
+    height: calc(100vh - 9rem);
+    width: 35rem;
+    background-color: white;
+    box-shadow: 0px 20px 14px 0px rgb(0 0 0 / 75%);
+    right: -100%;
+}
+
+.header .cart-items-container .active{
+    right: 3rem;
+}
+
+.header .cart-items-container .cart-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.header .cart-items-container .cart-item:hover{
+    box-shadow: 0px 0px 10px 0px rgb(0,0,0,0.75);
+}
+
+.header .cart-items-container .cart-item .fa-times{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black-color);
+}
+
+.header .cart-items-container .cart-item img{
+    height: 7rem;
+}
+
+.header .cart-items-container .cart-item .contact h3{
+    font-size: 2rem;
+    color: var(--black-color);
+    padding-bottom: 0.5rem;
+}
+
+.header .cart-items-container .cart-item .contact .price{
+    font-size: 1.5rem;
+    color: var(--black-color);
+}
+
+.header .cart-items-container .btn{
+    width: 100%;
+    text-align: center;
+    border-radius: unset;
+}
+
+.header #menu-btn{
+    display: none;
+}
+
+/* Genel Son */
+
+
+/* Anasayfa başlangıc */
+
+.home {
+    min-height: 100vh; /* Ana sayfanın minimum yüksekliği 100vh (tam sayfa yüksekliği) */
+    background: url(images/giyim.arkaplan.jpg) no-repeat; /* Arka plan resmi */
+    background-size: cover; /* Arka plan resmini kapsama */
+    background-position: center; /* Arka plan resmini ortalama */
+    margin-top: -14.5rem; /* Üstten boşluk bırakmadan yukarı kaydırma */
+    display: flex; /* Esnek düzen kullanma */
+    align-items: center; /* İç öğeleri ortalama */
+    justify-content: center; /* İç öğeleri yatay ortalama */
+    text-align: center; /* Metni ortalama */
+}
+
+.home .content {
+    max-width: 60rem; /* İçeriğin maksimum genişliği 60rem */
+}
+
+.home .content h3 {
+    font-size: 6rem; /* Başlık yazı boyutu */
+    color: white; /* Başlık rengi beyaz */
+    margin-bottom: 1rem; /* Başlığın altındaki boşluk */
+}
+
+.home .content p {
+    font-size: 2rem; /* Paragraf yazı boyutu */
+    font-weight: 300; /* Paragraf kalınlığı */
+    line-height: 1.8; /* Satır yüksekliği */
+    padding: 1rem 0; /* Paragrafın iç boşlukları */
+    color: white; /* Paragraf rengi beyaz */
+}
+
+/* scroll top başlangıç */
+
+.scroll-to-top {
+    position: fixed; /* Sabit konum */
+    bottom: 20px; /* Alt boşluk */
+    right: 20px; /* Sağ boşluk */
+    background-color: transparent; /* Arka plan rengi saydam */
+    border: none; /* Kenarlık yok */
+    padding: 10px; /* İç boşluk */
+    border-radius: 5px; /* Kenarları yuvarlama */
+    cursor: pointer; /* İmleci tıklanabilir yapma */
+    display: none; /* Başlangıçta görünmez */
+}
+
+.scroll-to-top img {
+    width: 30px; /* Resim genişliği */
+    height: 30px; /* Resim yüksekliği */
+}
+
+#top {
+    position: absolute;
+    top: 0; /* Sayfanın en üst kısmına yerleştirir */
+}
+
+.show {
+    display: block; /* Görünür */
+}
+
+/* scroll top sonu */
+
+/* Anasayfa sonu */
+
+
+/* Ürünler Bağlangıcı */
+
+.menu .box-container {
+    display: grid; /* Grid düzen kullanma */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Kutuların kolondan oluşması */
+    gap: 1.5rem; /* Kutular arasındaki boşluk */
+}
+
+.menu .box-container .box {
+    padding: 3rem; /* Kutunun iç boşlukları */
+    background-color: white; /* Kutunun arka plan rengi beyaz */
+    border-radius: 3rem; /* Kutunun köşelerini yuvarlama */
+    min-height: 60rem; /* Kutunun minimum yüksekliği 60rem */
+    display: flex; /* Esnek düzen kullanma */
+    flex-direction: column; /* İç öğeleri dikey yerleştirme */
+    align-items: flex-start; /* İç öğeleri sola yaslama */
+    justify-content: space-between; /* İç öğeleri arasını açarak yerleştirme */
+    overflow: hidden; /* Taşmayı önlemek için */
+    position: relative; /* Pozisyon belirlemek için */
+}
+.menu .box-container .box .box-head {
+    display: flex; /* Esnek düzen kullanma */
+    flex-direction: column; /* İç öğeleri dikey yerleştirme */
+    flex-grow: 1; /* Kutunun esnekliğini artırma */
+}
+.menu .box-container .box img {
+    width: 100%; /* Resmin genişliği %100 olacak şekilde ayarlandı */
+    object-fit: cover; /* Resmin içeriği kutuya göre kaplanacak şekilde ayarlanması */
+    transition: transform 0.3s ease; /* Resim büyüme efekti için geçiş */
+    border-radius: 1rem; /* Resmin köşelerini oval hale getirmek için */
+}
+
+.menu .box-container .box:hover img {
+    transform: scale(1.05); /* Resim üzerine gelindiğinde büyüme */
+}
+
+.menu .box-container .box .menu-category {
+    font-size: 1.2rem; /* Menü kategorisi yazı boyutu */
+    text-transform: uppercase; /* Menü kategorisini büyük harf yapma */
+}
+
+.menu .box-container .box h3 {
+    font-size: 3rem; /* Menü başlık yazı boyutu */
+    padding: 1rem 0; /* Menü başlığının iç boşlukları */
+}
+
+.menu .box-container .box .price {
+    font-size: 2.5rem; /* Fiyat yazı boyutu */
+    padding: 0.5rem 0; /* Fiyatın iç boşlukları */
+    margin-top: auto; /* Üst kısımdan boşluk oluştur ve butona kadar yer tut */
+}
+
+
+.menu .box-container .box .price span {
+    font-size: 1.5rem; /* Fiyat altındaki geçersiz fiyat yazı boyutu */
+    text-decoration: line-through; /* Geçersiz fiyatın üstü çizgili */
+    font-weight: 300; /* Geçersiz fiyat kalınlığı */
+}
+
+/* Ürünler sonu */
+
+
+/* Yorumlar Başlangıcı */
+
+.review .box-container {
+    display: grid; /* Grid düzen kullanma */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Kutuların kolondan oluşması */
+    gap: 1.5rem; /* Kutular arasındaki boşluk */
+}
+
+.review .box-container .box{
+    border: var(--border);
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: white;
+    border-radius: 3rem;
+}
+
+.review .box-container .box p{
+    font-size: 1.5rem;
+    line-height: 1.8;
+    padding: 2rem 0;
+}
+
+.review .box-container .box .user{
+   height: 7rem;
+   width: 7rem;
+   border-radius:50%;
+   object-fit:cover ; 
+}
+
+.review .box-container .box h3{
+   padding: 1rem 0;
+   font-size: 2rem;
+   color: var(--black-color);
+}
+
+.review .box-container .box .stars i{
+    font-size: 1.5rem;
+    color: gold;
+}
+
+/* Yorumlar Sonu */
+
+
+/* İletişim Başangıcı */
+
+.contact .row{
+    display: flex;
+    background-color: var(--black-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.contact .row .map{
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact .row form{
+    flex: 1 1 45rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form h3{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    color: white;
+}
+
+.contact .row form .inputBox{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    border: var(--border);
+}
+
+.contact .row form .inputBox i{
+    color: white;
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.contact .row form .inputBox input{
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.7rem;
+    color: white;
+    text-transform: none;
+    background-color: transparent;
+}
+
+.contact .row form .btn{
+    color: var(--black-color);
+    background-color: white;
+    font-weight: bold;
+}
+
+/* iletişim Sonu */
+
+
+/* Hakkımızda Başlangıcı */
+
+.about {
+    background-color: var(--black-color);
+    padding: 5rem 7%; /* İç boşluklar */
+    text-align: center; /* İçerikleri ortala */
+}
+
+.about .heading {
+    font-size: 4rem; /* Başlık boyutu */
+    color: white; /* Başlık rengi */
+    margin-bottom: 3rem; /* Alt boşluk */
+}
+
+.about-container {
+    display: flex; /* Esnek düzen */
+    flex-direction: column; /* Dikey düzen */
+    align-items: center; /* İçerikleri ortala */
+}
+
+.about-content {
+    max-width: 800px; /* Maksimum genişlik */
+    margin-bottom: 2rem; /* Alt boşluk */
+}
+
+.about-content h2 {
+    font-size: 3rem; /* Başlık boyutu */
+    margin-bottom: 1.5rem; /* Alt boşluk */
+    color: white;
+}
+
+.about-content h3 {
+    font-size: 2rem; /* H3 başlık boyutu */
+    margin: 1.5rem 0; /* Üst ve alt boşluk */
+    color: white; /* H3 başlık rengi */
+}
+
+.about-content p {
+    font-size: 1.6rem; /* Paragraf boyutu */
+    margin-bottom: 1.5rem; /* Alt boşluk */
+    color: white; /* Yazı rengi */
+    line-height: 1.8; /* Satır yüksekliği */
+}
+
+.about-image {
+    margin-top: 2rem; /* Üstte boşluk */
+    text-align: center; /* İçeriği ortala */
+}
+
+.about-image img {
+    width: 100%; /* Resim genişliği tam olarak */
+    border-radius: 1.5rem; /* Köşeleri yuvarla */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+}
+
+.about .about-container .about-content .btn {
+    color: var(--black-color);
+    background-color: white;
+    font-weight: bold;
+    padding: 1rem 2rem; /* Buton içi boşluk */
+    border: none; /* Kenarlık yok */
+    border-radius: 5px; /* Köşe yuvarlama */
+    cursor: pointer; /* İmleç işareti */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+.about .about-container .about-content .btn:hover {
+    background-color: #f0f0f0; /* Hover rengi */
+}
+
+.social-media {
+    margin-top: 2rem; /* Üst boşluk */
+}
+
+.social-media a {
+    margin: 0 1rem; /* Sağ ve sol boşluk */
+    color: white; /* Yazı rengi */
+    font-size: 1.8rem; /* İkon boyutu */
+}
+
+/* Hakkımızda Sonu */
+
+
+@media(max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    .header .logo img{
+        height: 7rem;
+    }
+    section{
+        padding: 2rem;
+    }
+    .products .box-container .box .box-head .name{
+    font-size: 3.4rem;
+    }
+}
+@media(max-width: 768px){
+   .header #menu-btn{
+        display: inline-block;
+    }
+    .header .navbar{
+        position: absolute;
+        top: 95%;
+        background-color: white;
+        height: calc(100vh - 9rem);
+        width: 30rem;
+        box-shadow: 0px 20px 14px 0px rgb(0 0 0 / 75%);
+        right: -100%;
+    }
+    .header .navbar .active{
+        right: 3rem;
+    }
+    .header .navbar a{
+        color: var(--black-color);
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+}
+@media(max-width: 576px){
+    html{
+        font-size: 50%;
+    }
+}
